@@ -1,0 +1,45 @@
+body{
+   background-image: url('assets/img/space.jpg');
+   color: white;
+   font-family: "Montserrat", sans-serif;
+}
+
+.main {
+    margin-top: 4rem;
+}
+.list-group-item img{
+    height:17rem;
+}
+
+.card-body {
+    background-color: lightgrey;
+}
+
+.card-title {
+    font-family: "Oswald", sans-serif;
+    font-weight: bold;
+}
+
+.detailsImage img{
+    height: 15rem;
+    width: 17rem;
+    margin-bottom: 1rem;
+}
+
+.detailsContainer {
+    width: 60rem;
+    margin: auto;
+    margin-top: 10rem;
+}
+
+.row{
+    background-color: black;
+}
+
+.heading div{
+    color:red;
+}
+
+.main h1{
+    margin:3rem;
+}
