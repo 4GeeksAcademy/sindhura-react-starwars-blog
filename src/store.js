@@ -40,10 +40,8 @@ export default function storeReducer(store, action = {}) {
         
 
         case 'favorite/Deleted':
-          console.log('delete');
           const name = action.payload;
           const filtered_favorites = store.favorites.filter((obj) => obj.name !=name);
-          console.log(filtered_favorites);
           return {
             ...store,
             favorites:filtered_favorites
