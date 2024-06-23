@@ -1,10 +1,12 @@
 import { Link } from "react-router-dom";
 import useGlobalReducer from "../hooks/useGlobalReducer"
+import { useEffect } from "react";
 
 export default function Favorites(){
     const {store,dispatch} = useGlobalReducer();
 
     function handleDeleteFavorite(name){
+
 
         dispatch({
             type :'favorite/Deleted',
@@ -12,7 +14,7 @@ export default function Favorites(){
         })
 
     }
-
+ 
     return (
         <div className="btn-group dropdown-center float-end me-4">
             <button type="button" className="btn btn-secondary btn-lg dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">

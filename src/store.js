@@ -1,6 +1,6 @@
 export const initialStore=()=>{
   return{
-    people_data: [],
+    characters_data: [],
     planets_data:[],
     favorites:[]
     }
@@ -9,14 +9,14 @@ export const initialStore=()=>{
 export default function storeReducer(store, action = {}) {
   switch(action.type){
     
-      case 'data/Loaded' :
-        const peopleData = action.payload;
+      case 'characterData/Loaded' :
+        const charactersData = action.payload;
        return  {
           ...store,
-          people_data:peopleData
+          characters_data:charactersData
         }
 
-        case 'planets/Loaded' :
+        case 'planetsData/Loaded' :
           const planetsData = action.payload;
           return {
             ...store,
@@ -26,7 +26,7 @@ export default function storeReducer(store, action = {}) {
         case 'favorite/Added':
         const new_obj = action.payload;
           const exists = store.favorites.length ? store.favorites.filter((obj) => obj.name == new_obj.name): '';
-         if(exists){
+         if(exists && exists.length>0){
           return {
             ...store,
             favorites:store.favorites

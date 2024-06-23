@@ -43,3 +43,19 @@ body{
 .main h1{
     margin:3rem;
 }
+
+input {
+    display: none;
+  }
+
+  label {
+    font-size: 2rem;
+    color:black;
+    vertical-align: middle;
+  }
+
+  [id="heart"]:checked + label {
+    color: #e2264d;
+    will-change: font-size;
+    animation: heart 1s cubic-bezier(.17, .89, .32, 1.49);
+  }
