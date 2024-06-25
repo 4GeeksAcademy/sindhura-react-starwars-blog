@@ -48,13 +48,6 @@ export const PlanetCard = ({name,population,terrain}) => {
 
         })
         if(planet_selected.favorite){
-        //     added_favorites.push({
-        //         'link':`/planet/${name}`,name : name
-        // })
-        // localStorage.removeItem('favorites');
-        // localStorage.setItem('favorites',JSON.stringify(added_favorites));
-        // console.log(JSON.parse(localStorage.getItem("favorites") || "[]"))
-
             dispatch({
                 type:'favorite/Added',
                 payload:{

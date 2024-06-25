@@ -43,11 +43,8 @@ export default function storeReducer(store, action = {}) {
 
         //delete a favourite after delete button is clicked or heart is clicked
         case 'favorite/Deleted':
-          console.log('deleted called');
           const name = action.payload;
-          console.log('store_fav',store.favorites)
           const filtered_favorites = store.favorites.filter((fav) => fav.name != name);
-         console.log('filtered',filtered_favorites)
             return {
               ...store,
               favorites:filtered_favorites,
@@ -56,7 +53,6 @@ export default function storeReducer(store, action = {}) {
             
           //update the favourite key of the deleted item to false
           case 'favorite/Updated':
-            console.log('update called')
             const del_fav = action.payload
             if(del_fav.fav_type === 'character'){
               const updated_charData = store.characters_data.map((character)=> character.properties.name === del_fav.name ? {...character, favorite: ! character.favorite} : character);
