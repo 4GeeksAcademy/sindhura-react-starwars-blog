@@ -7,6 +7,8 @@ export const PlanetCard = ({name,population,terrain}) => {
     const [buttonColor,setButtonColor] = useState('black');
     const [isLoading,setIsLoading] = useState(false);
     const {store,dispatch} = useGlobalReducer();
+
+    //get planets data using API 
     useEffect(() =>{
                         async function handleGetPlanetsData() {
                             setIsLoading(true);
@@ -46,17 +48,17 @@ export const PlanetCard = ({name,population,terrain}) => {
 
         })
         if(planet_selected.favorite){
-            added_favorites.push({
-                'link':`/planet/${name}`,name : name
-        })
-        localStorage.removeItem('favorites');
-        localStorage.setItem('favorites',JSON.stringify(added_favorites));
-        console.log(JSON.parse(localStorage.getItem("favorites") || "[]"))
+        //     added_favorites.push({
+        //         'link':`/planet/${name}`,name : name
+        // })
+        // localStorage.removeItem('favorites');
+        // localStorage.setItem('favorites',JSON.stringify(added_favorites));
+        // console.log(JSON.parse(localStorage.getItem("favorites") || "[]"))
 
             dispatch({
                 type:'favorite/Added',
                 payload:{
-                    'link':`/planet/${name}`,name : name}
+                    'link':`/planet/${name}`,name : name,fav_type:'planet'}
             })
         }
         else{
@@ -71,14 +73,12 @@ export const PlanetCard = ({name,population,terrain}) => {
     return (
 
         	<div  className="main">
-				<h1><p>Planets</p></h1>
-              
-     
-     <div className={"text-center " + (isLoading ? 'visible' : 'invisible')} >
-  <div className="spinner-border" role="status">
-    <span className="visually-hidden">Loading...</span>
-  </div>
-</div>
+				<h1><p>Planets</p></h1>  
+                <div className={"text-center " + (isLoading ? 'visible' : 'invisible')} >
+                <div className="spinner-border" role="status">
+                <span className="visually-hidden">Loading...</span>
+            </div>
+            </div>
 			<ul className="d-flex flex-row gap-5 overflow-x-scroll">
 			{
 				store.planets_data ? store.planets_data.map((planet) => {

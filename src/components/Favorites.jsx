@@ -5,12 +5,20 @@ import { useEffect } from "react";
 export default function Favorites(){
     const {store,dispatch} = useGlobalReducer();
 
-    function handleDeleteFavorite(name){
+    //function called when user clicks on the delete icon 
+    function handleDeleteFavorite(name,fav_type){
 
-
+        //to delete the item from favourite list
         dispatch({
             type :'favorite/Deleted',
-            payload : name
+            payload :name
+        })
+
+        //to set the favourite key of the  deleted favorite item back to false
+        dispatch({
+            type:'favorite/Updated',
+            payload:{name:name,
+                fav_type:fav_type}
         })
 
     }
@@ -25,7 +33,7 @@ export default function Favorites(){
                     store.favorites ? store.favorites.map((obj)=> 
                     <li className="d-flex justify-content-around">
                         <Link to={obj.link} className="dropdown-item">{obj.name}</Link>
-                        <button className="btn" onClick={()=>handleDeleteFavorite(obj.name)}><i className="fa-solid fa-trash-can"></i></button>
+                        <button className="btn" onClick={()=>handleDeleteFavorite(obj.name,obj.fav_type)}><i className="fa-solid fa-trash-can"></i></button>
                     </li>) :''
                 }       
             </ul>

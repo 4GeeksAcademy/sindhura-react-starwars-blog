@@ -8,9 +8,9 @@ export default function CharacterDetails(){
 
 
         const url = "https://starwars-visualguide.com/assets/img/characters/";
-        const person = store.people_data.find((person)=> person.properties.name == name);
-        const num = person.uid;
-        const {gender,birth_year,height,eye_color,hair_color} = person.properties;
+        const character = store.characters_data.find((character)=> character.properties.name == name);
+        const num = character.uid;
+        const {gender,birth_year,height,eye_color,hair_color} = character.properties;
         const character_properties = {
             Gender : gender,
             'Birth-Year' : birth_year,
@@ -20,6 +20,6 @@ export default function CharacterDetails(){
         }
 
     return (
-        <Details name={name} object={character_properties} num={person.uid} url={url}></Details>
+        <Details name={name} object={character_properties} num={character.uid} url={url}></Details>
     )
 } 

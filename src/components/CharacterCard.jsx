@@ -9,6 +9,7 @@ export const CharacterCard = ({name,gender,hairColor,eyeColor,img}) => {
 
       const {store, dispatch} =useGlobalReducer();
 
+	  //gettting data for characters using API
    useEffect(()=>{
 			async function handleGetCharactersData() {
 				const resp = await fetch('https://www.swapi.tech/api/people/')
@@ -33,23 +34,29 @@ export const CharacterCard = ({name,gender,hairColor,eyeColor,img}) => {
 		},[])
 
 
+		//function to add favorite when heart is clicked
 		function handleCharacterFavourites(name){
+
+			//toggle the favourite value for that name
 			const updated_charData = store.characters_data.map((character)=> character.properties.name === name ? {...character, favorite: ! character.favorite} : character);
+			
 			const character = updated_charData.find((char)=>char.properties.name == name);
 			localStorage.removeItem('charactersData');
 
-			
+			//update the localstorage data with the new data(after favourite is set)
 			localStorage.setItem('charactersData',JSON.stringify(updated_charData));
 			dispatch({
 				type:'characterData/Loaded',
 				payload:updated_charData
 
 			})
+
+			
 			if(character.favorite){
 				dispatch({
 					type:'favorite/Added',
 					payload:{
-						'link':`/character/${name}`,name : name}
+						'link':`/character/${name}`,name : name ,fav_type:'character'}
 				})
 			}
 			else{
